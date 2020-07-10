@@ -1,0 +1,4 @@
+<h2>Welcome, <%= @user.username %></h2>
+<% @user.tickets.each do |ticket| %>
+    <p><%= ticket.content %></p>
+<% end %> 
