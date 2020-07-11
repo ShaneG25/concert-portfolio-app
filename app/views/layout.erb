@@ -18,6 +18,10 @@
 
         <%= yield %>
 
+      <form action="/logout" method="post">
+        Logout?
+        <input type="submit" name="logout" >
+      </form>
       <footer class="branding">
         <small>&copy; 2020 <strong>ConcertPortfolioApp</strong></small>
       </footer>

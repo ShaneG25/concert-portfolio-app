@@ -1,0 +1,5 @@
+<h2>Welcome, <%= Helpers.current_user(session).username %></h2>
+<p><a href="/tickets/new">Create New Entry</a></p> 
+<% @tickets.each do |ticket| %>
+    <p><%= ticket.content %></p>
+<% end %> 

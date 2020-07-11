@@ -1,0 +1,18 @@
+<% if Helpers.is_logged_in?(session) %>
+<%= @error %>
+    <h2>Enter the Info on Your Recent Concert/Event!</h2>
+  <form action='/tickets' method="post"> 
+    Title:
+    <input type="text" name="title" id="title"><br>
+    Date:
+    <input type="text" name="date" id="date"><br>
+    Head-lining Artist/Main Act:
+    <input type="text" name="artist" id="artist"><br>
+    Create Your Ticket: 
+    <input type="submit" name="submit" id="submit">
+
+  </form>
+
+  <% else %>
+      <h1> You Must Be Logged in to Enter New Tickets </h1>
+  <% end %>
