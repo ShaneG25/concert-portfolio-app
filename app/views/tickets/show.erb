@@ -1,8 +1,11 @@
-<h2>Welcome, <%= @ticket.user.username %></h2>
+<h2>Welcome, <%= @ticket.user.username %></h2> 
+<p><a href="/tickets/new">Create New Entry</a></p>
 <p>Title: <%= @ticket.title %> 
-<p>Date: <%= @ticket.date %>
-<p>Head-Liner/Main Event: <%= @ticket.artist %></p>
-<p><a href="/tickets/<%= @ticket.id %>">Edit Ticket</a></p> 
+<p>Date: <%= @ticket.date %> 
+<p>Head-Liner/Main Event: <%= @ticket.artist %></p> 
+<p><a href="/tickets/<%= @ticket.id %>%">See all Your Events</a></p>
+<%# <a href="/tickets/<%= @ticket.id/edit %>
+<p><a href="/tickets/<%= @ticket.id/edit %>">Edit Ticket</a></p>  
 <form action="/tickets/<%= @ticket.id %>" method="post">
 <input id="hidden" type="hidden" name="_method" value="delete">
 Delete Ticket: <input type="submit" name="Delete" id="Delete Ticket"> 

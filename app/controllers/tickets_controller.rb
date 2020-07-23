@@ -31,16 +31,8 @@ class TicketsController < ApplicationController
         end
     end
 
-    get '/tickets/:id' do 
-        if Helpers.is_logged_in?(session)
-            @ticket = Ticket.find(params[:id]) 
-            erb :'/tickets/show'
-        else
-            redirect to '/login'
-        end
-    end
-
     get '/tickets/:id/edit' do
+        # binding.pry
         if Helpers.is_logged_in?(session) && Helpers.current_user(session) == Ticket.find(params[:id]).user
             @ticket = Ticket.find(params[:id]) 
             erb :'/tickets/edit'
@@ -50,7 +42,7 @@ class TicketsController < ApplicationController
     end
 
     patch '/tickets/:id' do
-        if !params[:content].empty?
+        if !params[:title].empty?
             ticket = Ticket.find(params[:id]) 
             ticket.title = params[:title] 
             ticket.date = params[:date]
@@ -59,7 +51,25 @@ class TicketsController < ApplicationController
             ticket.save
             redirect to "/tickets/#{ticket.id}"
         else
+            redirect to "/tickets/#{params[:id]}/edit" 
+        end
+    end
+
+    get '/tickets/:id' do 
+        if Helpers.is_logged_in?(session)
+            @ticket = Ticket.find(params[:id])
+            erb :'/tickets/show'
+        else
+            redirect to '/login'
+        end
+    end
+
+    delete '/tickets/:id' do 
+        if Helpers.current_user(session) == Ticket.find(params[:id]).user 
+            Ticket.delete(params[:id])
+            redirect to "/"
+        else
             redirect to "/tickets/#{params[:id]}/edit"
         end
     end
-end
+end 

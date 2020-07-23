@@ -1,6 +1,10 @@
 <h2>Edit your Ticket <%= @ticket.user.username %></h2> 
 <form action="/tickets/<%= @ticket.id %>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-<input type="text" name="title" id="title" value="<%= @ticket.title %>">
+Title: <input type="text" name="title" id="title" value="<%= @ticket.title %>">
+<input id="hidden" type="hidden" name="_method" value="patch">
+Date: <input type="text" name="date" id="date" value="<%= @ticket.date %>">
+<input id="hidden" type="hidden" name="_method" value="patch">
+Artist: <input type="text" name="artist" id="artist" value="<%= @ticket.artist %>">
 <input type="submit" id="submit" value="Edit">
 </form> 

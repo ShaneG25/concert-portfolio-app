@@ -1,5 +1,11 @@
 <h2>Welcome, <%= Helpers.current_user(session).username %></h2>
 <p><a href="/tickets/new">Create New Entry</a></p> 
+<p><a href="/tickets/show">Manage Your Tickets</a></p>
+<%# <% if User.tickets == Helpers.current_user %> 
 <% @tickets.each do |ticket| %>
-    <p><%= ticket.content %></p>
+    <p>Title: <%= ticket.title %>
+    <p>Date: <%= ticket.date %>
+    <p>Head-Liner/Main Event: <%= ticket.artist %></p><br> 
+    <%# <% end %> 
 <% end %> 
+
