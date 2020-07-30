@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
 
     get '/tickets' do
         if Helpers.is_logged_in?(session)
-            @tickets = Ticket.all
+            @tickets = Helpers.current_user(session).tickets 
             erb :'/tickets/tickets'
         else
             redirect to '/login'
