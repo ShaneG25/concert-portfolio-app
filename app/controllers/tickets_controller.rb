@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
     end
 
     post '/tickets' do
-        if params[:title].empty?
+        if params[:title] && params[:date] && params[:artist].empty?
             redirect to '/tickets/new'
         else
             ticket = Ticket.new 
