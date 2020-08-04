@@ -18,16 +18,17 @@ class TicketsController < ApplicationController
     end
 
     post '/tickets' do
-        if params[:title] && params[:date] && params[:artist].empty?
-            redirect to '/tickets/new'
+        # binding.pry 
+        ticket = Ticket.new(title: params[:title], date: params[:date], artist: params[:artist],
+        user_id: Helpers.current_user(session).id)
+        if ticket.save
+            redirect to "/tickets/#{ticket.id}"
         else
-            ticket = Ticket.new 
-            ticket.title = params[:title]
-            ticket.date = params[:date]
-            ticket.artist = params[:artist]
-            ticket.user = Helpers.current_user(session)
-            ticket.save
-            redirect to "/tickets/#{ticket.id}" 
+            redirect to '/tickets/new'
+            # ticket.title = params[:title]
+            # ticket.date = params[:date]
+            # ticket.artist = params[:artist]
+            # ticket.user = Helpers.current_user(session)
         end
     end
 
